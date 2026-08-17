@@ -176,7 +176,7 @@ export function Header({ user = null }: HeaderProps) {
       {mobileMenuOpen ? (
         <nav
           id="mobile-nav"
-          className="border-t border-zinc-200 md:hidden dark:border-zinc-800"
+          className="absolute inset-x-0 top-full z-50 border-t border-zinc-200 bg-background/95 shadow-lg backdrop-blur supports-backdrop-filter:bg-background/80 md:hidden dark:border-zinc-800"
           aria-label="Mobile navigation"
         >
           <ul className="flex flex-col gap-1 px-4 py-3 sm:px-6">
