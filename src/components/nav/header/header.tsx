@@ -100,9 +100,11 @@ function NavLink({
 }
 
 export function Header({ user = null }: HeaderProps) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+  const isProfileActive = pathname === "/profile";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80 dark:border-zinc-800">
@@ -134,7 +136,12 @@ export function Header({ user = null }: HeaderProps) {
             <Link
               href="/profile"
               aria-label={user.name ? `Profile for ${user.name}` : "Profile"}
-              className="flex size-9 items-center justify-center rounded-full border border-zinc-200 text-zinc-600 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-foreground dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-foreground"
+              aria-current={isProfileActive ? "page" : undefined}
+              className={`flex size-9 items-center justify-center rounded-full border transition-colors ${
+                isProfileActive
+                  ? "border-zinc-300 bg-zinc-100 text-foreground dark:border-zinc-600 dark:bg-zinc-800"
+                  : "border-zinc-200 text-zinc-600 hover:border-zinc-300 hover:bg-zinc-100 hover:text-foreground dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-foreground"
+              }`}
             >
               {user.imageUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element

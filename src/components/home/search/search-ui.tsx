@@ -20,7 +20,7 @@ type UrlMode = "auto" | "custom";
 
 export function SearchUI() {
   const [mode, setMode] = useState<UrlMode>("auto");
-  const [url, setUrl] = useState("shortlink.dev/build-plan");
+  const [url, setUrl] = useState("type your url here...");
   const [customUrlDraft, setCustomUrlDraft] = useState("");
   const [appliedCustomUrl, setAppliedCustomUrl] = useState("");
 
